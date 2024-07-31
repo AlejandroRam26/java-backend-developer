@@ -9,7 +9,7 @@ Diseña, crea, desarrolla, implementa y mantiene: la arquitectura del servidor, 
 
 ## Internet
 
-Es la **red global** que conecta permite a las computadoras comunicarse entre si a través de un conjunto de **protocolos**. [Leer mas](internet.md)
+Es la **red global** que permite a las computadoras comunicarse entre si a través de un conjunto de **protocolos**. [Leer mas](internet.md)
 
 ## Lenguaje
 

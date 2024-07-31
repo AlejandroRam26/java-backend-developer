@@ -1,6 +1,6 @@
 # Internet
 
-Es la **red global** que conecta permite a las computadoras comunicarse entre si a través de un conjunto de protocolos.
+Es la **red global** que permite a las computadoras comunicarse entre si a través de un conjunto de protocolos.
 
 ## ¿Como Funciona?
 
