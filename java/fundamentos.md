@@ -311,6 +311,30 @@ No hay registro
 Tomar una siesta
 ```
 
+```mermaid
+---
+title: "Estructura if, else if y else."
+---
+flowchart LR
+    condition1{"if (condition)"}
+    condition2{"else if(condition)"}
+    conditionN{"else if(condition N)"}
+
+    statement1[if code]
+    statement2[else if code]
+    statementN[else if code-N]
+    statementS[else code]
+
+    startS((Start))
+    endS((End))
+
+    startS --> condition1 -->|false| condition2 -->|false| conditionN -->|false| statementS
+    condition1 -->|true| statement1
+    condition2 -->|true| statement2
+    conditionN -->|true| statementN
+    statement1 & statement2 & statementN & statementS --> endS
+```
+
 > Las variables de tipo `String` pueden usar el método `.equals()` para compararse.
 
 ### Estructura `switch`
@@ -318,11 +342,6 @@ Tomar una siesta
 Esta versión hace el código mas limpio y legible que el `if`, `else if` y `else`.
 
 Evalúa una **expresión** o variable contra varios valores posibles, son expresados como `cases`, y ejecuta un bloque de código, el cual es finalizado por la palabra clave `break`.
-
-```mermaid
-sequenceDiagram
-    sdasd
-```
 
 _Ejemplo:_
 
@@ -366,11 +385,292 @@ _Salida:_
 ¿Que dia es hoy?
 ```
 
+```mermaid
+---
+title = "Estructura switch"
+---
+flowchart LR
+    expression{"switch (expression)"}
+
+    case1{case 1}
+    case2{case 2}
+    caseN{case n}
+    caseS{default}
+
+    statement1[statement-1]
+    statement2[statement-2]
+    statementN[statement-n]
+    statementS[statement-s]
+
+    break1[break]
+    break2[break]
+    breakN[break]
+    breakS[break]
+
+    startS((Start))
+    endS((End))
+
+    startS --> expression --> case1 -->|Unmatched| case2 -->|Unmatched| caseN -->|Unmatched| caseS
+    case1 -->|Matched| statement1 --> break1
+    case2 -->|Matched| statement2 --> break2
+    caseN -->|Matched| statementN --> breakN
+    caseS --> statementS --> breakS
+    break1 & break2 & breakN & breakS --> endS
+```
+
 > Se prueba cada caso hasta que se devuelve `true`.
 >
 > En el caso de que ninguno devuelva `true`, se ejecutara el bloque `default`.
 
 ## Funciones
+
+Una funcion o método, es un bloque de código, colección de declaraciones, que realiza una determinada operación. Permite la reutilizacion de código, ya que una vez escrito puede usarse varias veces.
+
+> El más importante en Java es el método **main()**.
+
+### Declaración
+
+Proporciona informacion sobre los atributos del método, como visibilidad, tipo de retorno, nombre y argumentos.
+
+```java
+// acceso tipo nombre (argumentos)
+public int suma (int a, int b){ // encabezado
+    // cuerpo del metodo
+}
+```
+
+**Accesso**: especifica la visibilidad del metodo:
+
+- `public`: indica que el método es accesible por todas las clases.
+- `private`: el método solo es accesible en la clase que se define.
+- `protected`: es accesible dentro de la misma clase y subclases.
+- `default`: si no se usa un especificador de acceso el predeterminado es `private`.
+
+**Tipo de Retorno**:es el tipo de dato que devuelve el método. Puede ser primitivo, objeto, colección, vacio, etc. Si no devuelve nada se utiliza la palabra clave `void`.
+
+**Nombre**: es unico el cual defina la función del método.
+
+**Parametros**: encerrados con parentecis `()`, es una lista separada por comas, donde se declaran variables, con su tipo y nombre. Si el método no tiene parametros, los parentecis quedan en vacios.
+
+**Cuerpo**: contiene todas la acciones que se van a realizar. Está encerrado entre corchetes `{}`.
+
+### Nomenclatura
+
+El nombre de ser un **verbo** y empezar con minúscula. Si son más de dos palabras, el verbo debe ser deguido de un adjetivo o sustantivo. Se utiliza camelCase, cada palabra empieza con mayúscula, siendo la primera minúscula.
+
+> Es posible que un método tenga el mismo nombre que otro en la misma clase, se conoce como **método de sobrecarga**.
+
+```java
+public int sumar(int a, int b){...}
+public void organizarNumeros(int[] numeros){...}
+```
+
+### Tipos de Metodo
+
+Existen dos tipos de métodos en Java: los predefinidos, y los definidos por el usuario.
+
+**Mètodos Predefinidos**
+
+Son métodos que ya estan definidos en Java, pueden ser llamados en cualquier momento en el programa.
+
+_Ejemplo:_
+
+```java
+public class Prueba{
+    public static void main(String[] args){
+        // Utilizacion del método max() de la clase Math
+        System.out.println("El numero mayor es: " + Math.max(15,9));
+    }
+}
+```
+
+_Salida:_
+
+```
+El numero mayor es: 15
+```
+
+> Métodos como `main()`, `println()` y `max()`, ya se encuentran predefinidos. `max()` pertenece a la clase `Math`, `println()` a `PrintStream`.
+
+**Métodos Definidos por el Usuario**
+
+Son aquellos que son escritos por el programador, estos se modifican según el requerimiento. Son invocados mediante su nombre y argumentos.
+
+_Ejemplo:_
+
+```java
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        // se crea un objeto de la clase Scanner
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Ingrese un numero: ");
+        // el usuario ingresa un valor
+        int num = scan.nextInt();
+
+        // invocamos el metodo esPar()
+        if (esPar(num)){
+            System.out.println("El numero " + num + " es Par");
+        } else {
+            System.out.println("El numero " + num + " es Impar");
+        }
+    }
+    // método definido por el usuario
+    public static boolean esPar(int numero){
+        // cuerpo del método
+        if (numero % 2 == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+```
+
+_Salida:_
+
+```
+Ingrese un numer: 25
+El numero 25 es Impar
+```
+
+### Métodos Estaticos
+
+Poseen la palabra clave `static`. Indica que el método pertence a la clase y no a una instancia de la clase, pueden ser llamados sin crear un objeto, puden ser invocados a traves del nombre de la clase.
+
+_Ejemplo:_
+
+```java
+public class Prueba{
+    public static void main(String[] args){
+        saludar();
+    }
+    static void saludar(){
+        System.out.println("Bienvenido...");
+    }
+}
+```
+
+_Salida:_
+´´´
+Bienvenido...
+´´´
+
+### Método de Instancia
+
+No son estaticos y son definidos en la clase para ser utilizados al crear objetos de la clase.
+
+_Ejemplo:_
+
+```java
+public class Prueba{
+    public static void main(String[] args){
+        Prueba obj = new Prueba();
+        int a = 25;
+        int b = 10;
+        System.out.println("El producto de " + a + " y " + b + " es: " + multiplicar(a,b));
+    }
+    public int multiplicar(int a, int b){
+        return a * b;
+    }
+}
+```
+
+_Salida:_
+
+```
+El producto de 25 y 10 es: 250
+```
+
+Hay dos tipos de métodos de instancia:
+
+- **Métodos de Acceso**: permiten leer variables de instancia de un objeto. Se identifican facilmente con el prefijo **get**, llamados **getters**. Devuelven un valor que es privado.
+
+  ```java
+  public int getId(){
+      return id;
+  }
+  ```
+
+- **Métodos Mutadores**: son quienes pueden modificar las variables de instancia de un objeto. Se identifican facilmente con el prefijo **set**, llamados **setters**. No devuelven ningún valor, y tienen como parametro el mismo tipo de dato que la variable a la que hacen referencia.
+
+  ```java
+  public void setEdad(int edad){
+      this.edad = edad;
+  }
+  ```
+
+_Ejemplo:_
+
+```java
+public class Alumno{
+    private int edad;
+    private String nombre;
+    public void setEdad(int edad){
+        this.edad = edad;
+    }
+    public int getEdad(){
+        return edad;
+    }
+    public void setNombre(int nombre){
+        this.nombre = nombre;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public void verAlumno(){
+        System.out.println("Alumno: " nombre);
+        System.out.println("Edad: " edad);
+    }
+}
+```
+
+### Métodos Abstractos
+
+Estos métodos no poseen cuerpo, no tienen implementación. Son declarados en **clases Abstractas**. Se utiliza la palabra clave `abstract` para crearlas.
+
+```java
+abstract void metodo();
+```
+
+### Funciones Lambda
+
+Son funciones anónimas, las cuales pueden ser pasadas como argumentos o utilizarlas en colecciones.
+
+1- **Declaracion**: su sintaxis es `() -> { código }`, donde `()` indican los parametros de entrada, y `{ código }` es el bloque de código que se ejecutara.
+
+```java
+// funcion lambda que devuelve el cuadrado de un numero
+Integer cuadrado = (int x) -> x * x;
+```
+
+2- **Utilización en colecciones**: se utilizan comunmente en colecciones para deficinir que acciones se aplicarán a los elementos de esta.
+
+```java
+// ejemplo para filtrar numeros pares de una lista y los ordena de menor a mayor
+List<Integer> numeros = Arrays.asList(2,35,69,26,11,90);
+List<Integer> res = numeros.stream()
+            .filter(x -> x % 2 == 0)
+            .sorted();
+// ahora los mostramos en la consola
+res.stream().forEach(System.out::println);
+```
+
+_Salida:_
+
+```
+2
+26
+90
+```
+
+3- **Utilizadas como argumentos**: tambien pueden ser utilizacas como argumentos:
+
+```java
+List<Persona> personas = creacionDeLista();
+Collections.sort(personas, (p1, p2) -> p1.getNombre().compareTo(p2.getNombre()));
+```
 
 ## Fecha y Tiempo
 
