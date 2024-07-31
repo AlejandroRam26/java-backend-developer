@@ -1,43 +1,50 @@
-# Backend
+# Backend [🌐](https://roadmap.sh/backend)
+
+Hace referencia al desarrollo por el lado del servidor. Se encarga de la lógica del servidor, las bases de datos y APIs, procesamiento de solicitudes y respuestas, autenticación y autorización, seguridad y protección de datos.
+
+### ¿Qué hace un Desarrollador Backend?
+
+Se encarga de crear, implementar y mantener la logica del lado del servidor, con el fin de que una aplicación web funcione correctamente.
+Diseña, crea, desarrolla, implementa y mantiene: la arquitectrura del servidor, APIs, bases de datos, la lógica de negocio.
 
 ## Internet
 
-## Language
+## Lenguaje
 
-## Version Control System
+## Sistema de Control de Versiones
 
-## Repo Hosting Services
+## Servicios Hosting Repo
 
-## Relational Databases
+## Base de Datos Relacional
 
-## About APIs
+## Sobre APIs
 
-## Caching
+## Cacheo
 
-## Web Security
+## Seguridad Web
 
 ## Testing
 
 ## CI / CD
 
-## software Design & Architecture
+## Diseño y Arquitectura de Software
 
-## Design and Development Principles
+## Principios de Diseño y Desarrollo
 
-## Containerization vs Virtualization
+## Contenerización vs Virtualización
 
 ## Message Brokers
 
-## Search Engines
+## Motores de Búsqueda
 
-## Web Servers
+## Servidores Web
 
-## Real-Time Data
+## Datos en tiempo real
 
 ## GraphQL
 
-## NoSQL Databases
+## Bases de datos NoSQL
 
-## Building For Scale
+## Desarrollo a escala
 
-## Basic Infraestructure Knowledge
+## Conocimientos Básicos de Infraestructura
